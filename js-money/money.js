@@ -265,6 +265,19 @@ Money.prototype.max = function(other) {
 };
 
 /**
+ * Serialize object to JSON
+ *
+ * @returns {String}
+ */
+Money.prototype.toJSON = function() {
+  return {
+    amount: this.getAmount(),
+    currency: this.getCurrency()
+  };
+};
+
+
+/**
  * Returns true if the input data matches the form of a money object
  *
  * @returns {Boolean}
@@ -285,6 +298,18 @@ Money.constructMoneyIfMatching = function(doc) {
     return new Money(doc.amount, doc.currency, true);
   }
   return doc;
+};
+
+/**
+ * Serialize object to JSON
+ *
+ * @returns {String}
+ */
+Money.fromJSON = function(obj) {
+  if (Money.isUntypedMoney(obj)) {
+    return new Money(obj.amount, obj.currency);
+  }
+  throw new Error("Not a JSON-encoded Money object");
 };
 
 /**
@@ -326,6 +351,7 @@ Money.validateCurrency = function(currency) {
   }
   return true;
 };
+
 
 if (typeof module === 'object')
     module.exports = Money;

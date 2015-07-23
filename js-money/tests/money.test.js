@@ -265,5 +265,12 @@ describe('Money', function () {
     //     expect(newMoney.getAmount()).to.equal(1000);
     //     expect(newMoney.getCurrency()).to.equal('EUR');
     // });
+    it('should serialize to JSON', function () {
+        var first = new Money(1000, 'EUR');
+        var str = first.toJSON();
+        var second = Money.fromJSON(str);
+
+        expect(first).to.deep.equal(second);
+    });
 
 });
