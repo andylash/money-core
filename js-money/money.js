@@ -1,4 +1,4 @@
-/* global Money:true, module */
+/* global module */
 /* jshint curly:false, camelcase:false */
 "use strict";
 
@@ -23,7 +23,7 @@ So I don't want David to get the blame if you don't like them.  */
  * @returns {Money}
  * @constructor
  */
-Money = function(amount, currency, amountInMinorUnits) {
+var Money = function(amount, currency, amountInMinorUnits) {
     var self = this;
     self.currency = currency['toUpperCase'](); //weird javascript type conversion requires this calling form
 
