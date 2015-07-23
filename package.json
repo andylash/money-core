@@ -1,0 +1,23 @@
+{
+  "name": "money-core",
+  "version": "0.1.0",
+  "description": "Core parts of meteor-money as an NPM package",
+  "author": "Andy Lash <andy@opstarts.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andylash/money-core"
+  },
+  "bugs": {
+    "url": "https://github.com/andylash/money-core/issues"
+  },
+  "keywords": [
+    "money"
+  ],
+  "dependencies": {
+    "money": "0.2.0"
+  },
+  "main": "src/index.js",
+  "preferGlobal": false,
+  "private": false,
+  "license": "MIT"
+}
