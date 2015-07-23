@@ -2,6 +2,7 @@
 "use strict";
 
 var Money = require('../js-money/currency');
+var fx = require('money');
 
 //This file puts a currency conversion method on Money.  It's in a separate file to keep Money from
 // having a dependency on FX

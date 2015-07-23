@@ -270,7 +270,9 @@ Money.prototype.max = function(other) {
  * @returns {Boolean}
  */
 Money.isUntypedMoney = function(doc) {
-  return (! Money.isMoney(doc) && _.isObject(doc) && _.isNumber(doc.amount) && _.isString(doc.currency));
+  var type = typeof doc;
+  return !Money.isMoney(doc) && type === "function" || type === "object" && !!doc &&
+    !isNaN(parseFloat(doc.amount)) && isFinite(doc.amount) && typeof doc.currency === "string";
 };
 
 /**

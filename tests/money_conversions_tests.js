@@ -1,6 +1,10 @@
-/* global Money:true, describe, it, chai, fx */
+/* global Money:true, describe, it, chai */
 /* jshint curly:false, camelcase:false */
 "use strict";
+
+var Money = require('../src/money_conversions.js');
+var fx = require('money');
+var chai = require('chai');
 
 //base data for tests
 fx.base = "USD";
