@@ -253,24 +253,25 @@ describe('Money', function () {
         expect(Money.isMoney(second)).to.equal(false);
     });
 
-    // it('should construct a money object if needed', function () {
-    //     var first = new Money(1000, 'EUR');
-    //     var same = Money.constructMoneyIfMatching(first);
-    //     expect(first).to.equal(same);
-
-    //     var second = { amount: 100000, currency: 'EUR' };
-    //     var newMoney = Money.constructMoneyIfMatching(second);
-
-    //     expect(Money.isMoney(newMoney)).to.equal(true);
-    //     expect(newMoney.getAmount()).to.equal(1000);
-    //     expect(newMoney.getCurrency()).to.equal('EUR');
-    // });
     it('should serialize to JSON', function () {
         var first = new Money(1000, 'EUR');
         var str = first.toJSON();
         var second = Money.fromJSON(str);
 
         expect(first).to.deep.equal(second);
+    });
+
+    it('should construct a money object if needed', function () {
+        var first = new Money(1000, 'EUR');
+        var same = Money.constructMoneyIfMatching(first);
+        expect(first).to.deep.equal(same);
+
+        var second = { amount: 100000, currency: 'EUR' };
+        var newMoney = Money.constructMoneyIfMatching(second);
+
+        expect(Money.isMoney(newMoney)).to.equal(true);
+        expect(newMoney.getAmount()).to.equal(1000);
+        expect(newMoney.getCurrency()).to.equal('EUR');
     });
 
 });
