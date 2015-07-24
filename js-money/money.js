@@ -53,13 +53,13 @@ var assertSameCurrency = function(left, right) {
 
 var assertType = function(other) {
     other = Money.constructMoneyIfMatching(other);
-    if (!(other instanceof Money))
+    if (!Money.isMoney(other))
         throw new TypeError('Instance of Money required');
     return true;
 };
 
 var validateOperand = function(operand, self) {
-    if (operand instanceof Money) {
+    if (Money.isMoney(other)) {
       assertSameCurrency(self, operand);
       return {
         amount: operand.amount,
@@ -332,7 +332,7 @@ Money.getCurrencies = function() {
  * @returns {Boolean}
  */
 Money.isMoney = function(n) {
-  return (n instanceof Money);
+  return (n && n.constructor && n.constructor.name === 'Money' || n instanceof Money);
 };
 
 /**
