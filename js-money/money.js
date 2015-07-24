@@ -59,7 +59,7 @@ var assertType = function(other) {
 };
 
 var validateOperand = function(operand, self) {
-    if (Money.isMoney(other)) {
+    if (Money.isMoney(operand)) {
       assertSameCurrency(self, operand);
       return {
         amount: operand.amount,
