@@ -271,7 +271,7 @@ Money.prototype.max = function(other) {
  */
 Money.prototype.toJSON = function() {
   return {
-    amount: this.getAmount(),
+    amount: this.amount,
     currency: this.getCurrency()
   };
 };
@@ -307,7 +307,7 @@ Money.constructMoneyIfMatching = function(doc) {
  */
 Money.fromJSON = function(obj) {
   if (Money.isUntypedMoney(obj)) {
-    return new Money(obj.amount, obj.currency);
+    return new Money(obj.amount, obj.currency, true);
   }
   throw new Error("Not a JSON-encoded Money object");
 };
