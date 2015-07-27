@@ -284,7 +284,7 @@ Money.prototype.toJSON = function() {
  */
 Money.isUntypedMoney = function(doc) {
   var type = typeof doc;
-  return !Money.isMoney(doc) && type === "function" || type === "object" && !!doc &&
+  return !Money.isMoney(doc) !!doc &&
     !isNaN(parseFloat(doc.amount)) && isFinite(doc.amount) && typeof doc.currency === "string";
 };
 
