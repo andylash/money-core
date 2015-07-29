@@ -1,6 +1,6 @@
 {
   "name": "money-core",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Core parts of meteor-money as an NPM package",
   "author": "Andy Lash <andy@opstarts.com>",
   "repository": {
@@ -14,8 +14,7 @@
     "money"
   ],
   "dependencies": {
-    "money": "0.2.0",
-    "ejson": "2.0.1"
+    "money": "0.2.0"
   },
   "scripts": {
     "test": "mocha tests js-money/tests tests"
