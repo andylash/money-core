@@ -1,6 +1,6 @@
 "use strict";
 
-var Money = require('./money_conversions.js');
+var Money = require('./ejson_types.js');
 
 if (typeof module === 'object') {
   module.exports = Money;

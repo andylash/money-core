@@ -1,6 +1,8 @@
 /* global Money */
 "use strict";
 
+var EJSON = require('ejson');
+var Money = require('./money_conversions.js');
 
 var MONEY_TYPE_NAME = 'Money';
 Money.prototype.typeName = function() {
@@ -17,3 +19,7 @@ Money.prototype.toJSONValue = function() {
     currency: this.currency
   };
 };
+
+if (typeof module === 'object') {
+  module.exports = Money;
+}
