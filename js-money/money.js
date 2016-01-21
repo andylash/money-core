@@ -183,10 +183,13 @@ Money.prototype.divide = function(divisor) {
  * Allocates fund bases on the ratios provided returing an array of objects as a product of the allocation.
  *
  * @param {Array} other
+ * @param {Object} options options keys
+ * @param {Boolean} options.ignoreRemainder if true, ignore remainder.  don't try and allocate it out
  * @returns {Array.Money}
  */
-Money.prototype.allocate = function(ratios) {
+Money.prototype.allocate = function(ratios, options) {
     var self = this;
+    var opts = options || {};
     var remainder = self.amount;
     var results = [];
     var total = 0;
@@ -196,16 +199,18 @@ Money.prototype.allocate = function(ratios) {
     });
 
     ratios.forEach(function(ratio) {
-        var share = Math.floor(self.amount * ratio / total);
+        var val = self.amount * ratio / total;
+        var share = opts.ignoreRemainder ? val : Math.floor(val);
         results.push(new Money(share, self.currency, true));
         remainder -= share;
     });
 
-    for (var i = 0; remainder > 0; i++) {
-        results[i] = new Money(results[i].amount + 1, results[i].currency, true);
-        remainder--;
+    if (!opts.ignoreRemainder) {
+        for (var i = 0; remainder > 0; i++) {
+            results[i] = new Money(results[i].amount + 1, results[i].currency, true);
+            remainder--;
+        }
     }
-
     return results;
 };
 
