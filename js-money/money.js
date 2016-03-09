@@ -318,17 +318,27 @@ Money.fromJSON = function(obj) {
 };
 
 /**
- * Construct a new Money object if the input data matches the form of a money object, else it just returns input
+ * Returns list of currency objects ordered by name
  *
- * @returns {Money}
+ * @returns {[Currency]}
  */
 Money.getCurrencies = function() {
-  var currencies = [];
-  Object.keys(Money).forEach(function(key) {
-      if (typeof Money[key] !== "function")
-          currencies.push(Money[key]);
-  });
-  return currencies;
+  return Object.keys(Money)
+    .filter(function(a) {
+        return typeof Money[a] === "object";
+    })
+    .sort(function (a, b) {
+      if (Money[a].name < Money[b].name) {
+          return -1;
+      }
+      if (Money[a].name > Money[b].name) {
+          return 1;
+      }
+      return 0;
+    })
+    .map(function (a) {
+      return Money[a];
+    });
 };
 
 /**
