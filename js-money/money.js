@@ -76,7 +76,7 @@ var validateOperand = function(operand, self) {
 };
 
 var isZero = function(other) {
-    return (+other === 0);
+    return (other === 0);
 };
 
 /**
