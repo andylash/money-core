@@ -125,10 +125,21 @@ Money.prototype.add = function(other) {
     if (isZero(other)) //special case adding 0 number
         return self;
 
-    assertType(other);
-    assertSameCurrency(self, other);
+    var sum = self.amount;
+    if (Array.isArray(other)) {
+      for (var i = 0; i < other.length; i++) {
+        var o = other[i];
+        assertType(o);
+        assertSameCurrency(self, o);
+        sum += o.amount;
+      }
+    } else {
+      assertType(other);
+      assertSameCurrency(self, other);
+      sum += other.amount;
+    }
 
-    return new Money(self.amount + other.amount, self.currency, true);
+    return new Money(sum, self.currency, true);
 };
 
 /**
@@ -142,10 +153,21 @@ Money.prototype.subtract = function(other) {
     if (isZero(other)) //special case adding 0 number
         return self;
 
-    assertType(other);
-    assertSameCurrency(self, other);
-
-    return new Money(self.amount - other.amount, self.currency, true);
+    // copying the code from add(), rather than sharing to for perforamcne
+    var difference = self.amount;
+    if (Array.isArray(other)) {
+      for (var i = 0; i < other.length; i++) {
+        var o = other[i];
+        assertType(o);
+        assertSameCurrency(self, o);
+        difference -= o.amount;
+      }
+    } else {
+      assertType(other);
+      assertSameCurrency(self, other);
+      difference -= other.amount;
+    }
+    return new Money(difference, self.currency, true);
 };
 
 /**
