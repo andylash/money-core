@@ -1,6 +1,6 @@
 {
   "name": "money-core",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Core parts of meteor-money as an NPM package",
   "author": "Andy Lash <andy@opstarts.com>",
   "repository": {
