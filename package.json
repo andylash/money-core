@@ -14,7 +14,7 @@
     "money"
   ],
   "dependencies": {
-    "money": "0.2.0"
+    "money": "Opstarts/money.js"
   },
   "scripts": {
     "test": "mocha tests js-money/tests tests"
